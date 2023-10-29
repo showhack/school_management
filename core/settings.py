@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'gestion_miembros',
+    'gestion_metricas',
 ]
 
 MIDDLEWARE = [

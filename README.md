@@ -63,4 +63,3 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 ---
 
 ¡Esperamos que disfrutes utilizando la aplicación "school_management"! Si tienes alguna pregunta o necesitas asistencia, no dudes en ponerte en contacto con nosotros.
-```

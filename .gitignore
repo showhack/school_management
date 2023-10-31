@@ -41,3 +41,4 @@ logs/
 
 # Comentarios
 # Usa # para comentarios en tu archivo .gitignore
+core/__pycache__/*.pyc

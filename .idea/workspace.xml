@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d1dd5af1-04fb-406e-862d-36eea0cac904" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2XXnXH05MT1cR3UUGoIiqUPgaO3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/luisballagas/Documentos/Proyecto_Fajardo/school_management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="school_management" type="Python.DjangoServer" factoryName="Django server">
+      <module name="school_management" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d1dd5af1-04fb-406e-862d-36eea0cac904" name="Changes" comment="" />
+      <created>1698784329917</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698784329917</updated>
+      <workItem from="1698784331038" duration="2690000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat(configurations): update .gitignore file&#10;&#10;The `.gitignore` file has been updated to include additional exclusions and maintain a clean repository. The following exclusions have been added:&#10;&#10;- `**/__pycache__/*.pyc`: Exclude `.pyc` files within the `__pycache__` folder.&#10;- `.idea`: Exclude the JetBrains IntelliJ IDEA configuration folder.&#10;- `*.pyc`, `*.pyo`, `*.pyd`, `.DS_Store`: Exclude various generated and system-specific file types.&#10;- `venv/` and `env/`: Exclude virtual environment folders (`virtualenv` or `venv`).&#10;&#10;These changes will help prevent unnecessary files and folders from being included in the repository.">
+      <created>1698792330873</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698792330873</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat(configurations): add .env.example file&#10;&#10;In this commit, we've added a `.env.example` file, which is essential for configuring environment variables. This file serves as a clear template for defining environment variables used by the application. It is important for:&#10;&#10;- **Documentation:** Providing a structured reference for the required environment variables.&#10;- **Security:** Promoting safe handling of sensitive information by not hard-coding it in the codebase.&#10;- **Consistency:** Ensuring uniformity in environment variable names and values among developers.&#10;&#10;The `.env.example` file simplifies the setup process for new team members and reinforces security and best practices for handling sensitive data.">
+      <created>1698792495461</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698792495461</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat(configurations): add Makefile for 'school_management' project&#10;&#10;In this commit, we've introduced a Makefile tailored to the 'school_management' project. The Makefile simplifies routine tasks and encapsulates commands used in the development workflow">
+      <created>1698792651622</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698792651622</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat(configurations): add Pipenv for Dependency Management&#10;&#10;Integrated Pipenv for dependency management, utilizing Pipfile and Pipfile.lock for package control and creating a virtual environment. Simplifies dependency management and improves project stability.">
+      <created>1698792818803</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698792818803</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat(configurations): add docker-compose.local.yml for Local Development&#10;&#10;Included the docker-compose.local.yml file to define local development services, such as PostgreSQL and Django web server. This configuration streamlines local development and establishes necessary Docker containers for the project.">
+      <created>1698792954788</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698792954788</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat(configurations): Add decouple and configure the database&#10;&#10;This commit introduces significant changes in the database configuration. We have added the decouple library to securely and conveniently handle environment variables. Now, the database configuration is loaded from the .env file. This allows us to maintain the sensitivity of database data and simplifies project configuration. All the necessary variables, such as the database name, user, password, and other connection details, are defined in the .env file for easy setup and maintenance.">
+      <created>1698793459625</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698793459625</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat(configurations): update .gitignore file&#10;&#10;The `.gitignore` file has been updated to include additional exclusions and maintain a clean repository. The following exclusions have been added:&#10;&#10;- `**/__pycache__/*.pyc`: Exclude `.pyc` files within the `__pycache__` folder.&#10;- `.idea`: Exclude the JetBrains IntelliJ IDEA configuration folder.&#10;- `*.pyc`, `*.pyo`, `*.pyd`, `.DS_Store`: Exclude various generated and system-specific file types.&#10;- `venv/` and `env/`: Exclude virtual environment folders (`virtualenv` or `venv`).&#10;&#10;These changes will help prevent unnecessary files and folders from being included in the repository." />
+    <MESSAGE value="feat(configurations): add .env.example file&#10;&#10;In this commit, we've added a `.env.example` file, which is essential for configuring environment variables. This file serves as a clear template for defining environment variables used by the application. It is important for:&#10;&#10;- **Documentation:** Providing a structured reference for the required environment variables.&#10;- **Security:** Promoting safe handling of sensitive information by not hard-coding it in the codebase.&#10;- **Consistency:** Ensuring uniformity in environment variable names and values among developers.&#10;&#10;The `.env.example` file simplifies the setup process for new team members and reinforces security and best practices for handling sensitive data." />
+    <MESSAGE value="feat(configurations): add Makefile for 'school_management' project&#10;&#10;In this commit, we've introduced a Makefile tailored to the 'school_management' project. The Makefile simplifies routine tasks and encapsulates commands used in the development workflow" />
+    <MESSAGE value="feat(configurations): add Pipenv for Dependency Management&#10;&#10;Integrated Pipenv for dependency management, utilizing Pipfile and Pipfile.lock for package control and creating a virtual environment. Simplifies dependency management and improves project stability." />
+    <MESSAGE value="feat(configurations): add docker-compose.local.yml for Local Development&#10;&#10;Included the docker-compose.local.yml file to define local development services, such as PostgreSQL and Django web server. This configuration streamlines local development and establishes necessary Docker containers for the project." />
+    <MESSAGE value="feat(configurations): Add decouple and configure the database&#10;&#10;This commit introduces significant changes in the database configuration. We have added the decouple library to securely and conveniently handle environment variables. Now, the database configuration is loaded from the .env file. This allows us to maintain the sensitivity of database data and simplifies project configuration. All the necessary variables, such as the database name, user, password, and other connection details, are defined in the .env file for easy setup and maintenance." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(configurations): Add decouple and configure the database&#10;&#10;This commit introduces significant changes in the database configuration. We have added the decouple library to securely and conveniently handle environment variables. Now, the database configuration is loaded from the .env file. This allows us to maintain the sensitivity of database data and simplifies project configuration. All the necessary variables, such as the database name, user, password, and other connection details, are defined in the .env file for easy setup and maintenance." />
+  </component>
+</project>

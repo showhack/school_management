@@ -1,4 +1,5 @@
 from django.db import models
+from apps.gestion_miembros.models import Entrenador
 
 
 # ----------------- DISTRIBUCION DE ACENTOS -----------------
@@ -19,7 +20,7 @@ class DistribucionAcentosSubCategoria(models.Model):
 
     # Relaciones con modelos que aun no existen
     # grupo_etario = models.ManyToManyField('gestion_personas.GrupoEtario')
-    # profesor = models.ManyToManyField('gestion_personas.Profesor')
+    # profesor = models.ManyToManyField()
     # instructor = models.ManyToManyField('gestion_personas.Instructor')
 
 

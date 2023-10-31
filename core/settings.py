@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^#f3ws#88&+(uhv#h&+u2+i#9=s3#!^ot^271z*ocwxf*a3dg%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -77,16 +77,28 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#databases
+import os
+from decouple import config
+
+# Configuración de la base de datos
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'school_management',
-        'USER': 'showhack',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': config('POSTGRES_DB', default='school_management'),
+        'USER': config('POSTGRES_USER', default='jlhiKPOTpaiVVIILLdiGnQtjpRaGPqWK'),
+        'PASSWORD': config('POSTGRES_PASSWORD', default='gU4ER6zVjrczs5lMROSZUqPz8jS39qrkyiOgjHICqc35doMjbO4xq6svu8BnxC2K'),
+        'HOST': config('POSTGRES_HOST', default='postgres'),
+        'PORT': config('POSTGRES_PORT', default='5432'),
     }
 }
+
+
+# Otras configuraciones de Django
+SECRET_KEY = os.environ.get('SECRET_KEY', 'mysecretkey')
+
 
 
 # Password validation

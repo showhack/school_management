@@ -11,6 +11,7 @@ typing-extensions = "==4.8.0"
 environ = "*"
 djangorestframework = "*"
 psycopg2-binary = "*"
+python-decouple = "*"
 
 [dev-packages]
 

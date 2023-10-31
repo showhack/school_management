@@ -1,0 +1,44 @@
+version: "3"
+services:
+  postgres:
+      build:
+        context: .
+        dockerfile: ./compose/local/postgres/Dockerfile
+      image: school_management_postgres
+      # container_name: school_management_postgres
+      volumes:
+        - postgres_data_local:/var/lib/postgresql/data  # Agrega esta definición de volumen
+        - postgres_backup_local:/backups
+      env_file:
+        - ./.envs/.local/.postgres
+      ports:
+        - "5432:5432"
+    
+
+  web: &web
+    build:
+      context: .
+      dockerfile: compose/local/Dockerfile  # Asegúrate de que esto sea correcto.
+    image: school_management
+    env_file:
+      - ./.envs/.local/.django
+    depends_on:
+      - postgres
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+
+
+
+networks:
+  default:
+    external:
+      name: school_management_local
+
+volumes:
+  postgres_data_local: {}
+  postgres_backup_local: {}

@@ -1,3 +1,44 @@
-venv
-.vscode
-/env
+
+**/__pycache__/*.pyc
+.idea
+# Archivos y carpetas generados por el sistema
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+
+# Entornos virtuales (si utilizas virtualenv o venv)
+venv/
+env/
+
+# Dependencias de Python (si estás utilizando pip)
+# Puedes especificar un archivo específico, como requirements.txt
+# o ignorar todo un directorio de dependencias (por ejemplo, /venv/)
+# requirements.txt
+# lib/
+# lib64/
+# include/
+# bin/
+
+# Carpeta donde se generan archivos de compilación o resultados de ejecución
+# (Puedes personalizar esto en función de tu lenguaje de programación)
+__pycache__/
+dist/
+build/
+*.egg-info/
+.env
+# Carpeta de registro o archivos de registro
+log/
+logs/
+*.log
+*.log.*
+*.access
+*.error
+
+# Carpetas específicas o archivos que deseas ignorar
+# ejemplo:
+# secret_key.txt
+# config.ini
+
+# Comentarios
+# Usa # para comentarios en tu archivo .gitignore

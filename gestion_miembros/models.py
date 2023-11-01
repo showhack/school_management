@@ -5,57 +5,41 @@ CHOICE_GENEROS = (
     ('F', 'FEMENINO')
 )
 
-
-# ------------------------------------------------------------------------------------------
-# ****************************************GRUPO ETARIO**************************************
-# ------------------------------------------------------------------------------------------
-
+# Modelo para Grupo Etario
 class GrupoEtario(models.Model):
     rango_edad = models.CharField(max_length=50, unique=True)
 
-
-# ------------------------------------------------------------------------------------------
-# ****************************************DIRECciON*****************************************
-# ------------------------------------------------------------------------------------------
-
+# Modelos para Dirección
 class Pais(models.Model):
     nombre = models.CharField(max_length=100)
-
 
 class Provincia(models.Model):
     nombre = models.CharField(max_length=100)
     pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
 
-
 class Municipio(models.Model):
     nombre = models.CharField(max_length=100)
     provincia = models.ForeignKey(Provincia, on_delete=models.CASCADE)
-
 
 class Direccion(models.Model):
     calle = models.CharField(max_length=100)
     numero = models.IntegerField()
     municipio = models.ForeignKey(Municipio, on_delete=models.RESTRICT)
 
-
-# ------------------------------------------------------------------------------------------
-# ****************************************PERSONA*******************************************
-# ------------------------------------------------------------------------------------------
-
+# Modelo para Persona
 class Persona(models.Model):
     ci = models.CharField(max_length=11, unique=True, primary_key=True, blank=True)
-    nombre = models.CharField(max_length=100)
-    genero = models.CharField(
-        max_length=10, choices=CHOICE_GENEROS, default='M')
-    edad = models.PositiveBigIntegerField()
+    nombre = models.CharField(max_length=100, null=True)
+    genero = models.CharField(max_length=10, choices=CHOICE_GENEROS, default='M')
+    edad = models.PositiveBigIntegerField(null=True, blank=True)
     activo = models.BooleanField(default=True)
+    
+    def __str__(self):
+            return self.nombre
 
-
-# ------------------------------------------------------------------------------------------
-# ****************************************ATLETAS*******************************************
-# ------------------------------------------------------------------------------------------
-
-class Atleta(Persona):
+# Modelo para Atleta
+class Atleta(models.Model):
+    persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
     color_de_piel = models.CharField(max_length=30)
     grado_escolar = models.CharField(max_length=15)
     nuevo_ingreso = models.BooleanField(default=True)
@@ -66,38 +50,21 @@ class Atleta(Persona):
     padres_fallecidos = models.BooleanField(default=False)
     ocupacion_padre = models.CharField(max_length=255, null=True, blank=True)
     ocupacion_madre = models.CharField(max_length=255, null=True, blank=True)
-    grupo_etario = models.ForeignKey(
-        GrupoEtario, on_delete=models.SET_NULL, null=True)
+    grupo_etario = models.ForeignKey(GrupoEtario, on_delete=models.SET_NULL, null=True)
 
-
-# ------------------------------------------------------------------------------------------
-# ****************************************ENTRENADORES**************************************
-# ------------------------------------------------------------------------------------------
-
-class Entrenador(Persona):
+# Modelo para Entrenador
+class Entrenador(models.Model):
+    persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
     anno_exp = models.SmallIntegerField()
-    grupo_etario = models.ManyToManyField(
-        GrupoEtario, through='RelacionEntrenadorGrupoEtario')
+    grupo_etario = models.ManyToManyField(GrupoEtario, through='RelacionEntrenadorGrupoEtario')
 
-
-# ------------------------------------------------------------------------------------------
-# ****************************************INSTRUCTORES**************************************
-# ------------------------------------------------------------------------------------------
-
+# Modelo para Instructor
 class Instructor(Persona):
     pass
 
-
-# ------------------------------------------------------------------------------------------
-# *****************************RELAciON ENTRENADOR-GRUPO ETARIO*****************************
-# ------------------------------------------------------------------------------------------
-
+# Modelo para la relación entre Entrenador y Grupo Etario
 class RelacionEntrenadorGrupoEtario(models.Model):
     entrenador = models.ForeignKey(
         Entrenador, on_delete=models.SET_NULL, null=True)
     grupo_etario = models.ForeignKey(
         GrupoEtario, on_delete=models.SET_NULL, null=True, to_field='rango_edad')
-
-# ------------------------------------------------------------------------------------------
-# ****************************RELAciON INSTRUCTOR-GRUPO ETARIO*****************************
-# ------------------------------------------------------------------------------------------

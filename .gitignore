@@ -42,3 +42,5 @@ logs/
 # Comentarios
 # Usa # para comentarios en tu archivo .gitignore
 core/__pycache__/*.pyc
+api/__pycache__/models.cpython-310.pyc
+core/__pycache__/settings.cpython-310.pyc

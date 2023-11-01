@@ -5,12 +5,14 @@ CHOICE_GENEROS = (
     ('F', 'FEMENINO')
 )
 
+
 # ------------------------------------------------------------------------------------------
 # ****************************************GRUPO ETARIO**************************************
 # ------------------------------------------------------------------------------------------
 
 class GrupoEtario(models.Model):
     rango_edad = models.CharField(max_length=50, unique=True)
+
 
 # ------------------------------------------------------------------------------------------
 # ****************************************DIRECciON*****************************************
@@ -19,18 +21,22 @@ class GrupoEtario(models.Model):
 class Pais(models.Model):
     nombre = models.CharField(max_length=100)
 
+
 class Provincia(models.Model):
     nombre = models.CharField(max_length=100)
     pais = models.ForeignKey(Pais, on_delete=models.CASCADE)
+
 
 class Municipio(models.Model):
     nombre = models.CharField(max_length=100)
     provincia = models.ForeignKey(Provincia, on_delete=models.CASCADE)
 
+
 class Direccion(models.Model):
     calle = models.CharField(max_length=100)
     numero = models.IntegerField()
     municipio = models.ForeignKey(Municipio, on_delete=models.RESTRICT)
+
 
 # ------------------------------------------------------------------------------------------
 # ****************************************PERSONA*******************************************
@@ -43,6 +49,7 @@ class Persona(models.Model):
         max_length=10, choices=CHOICE_GENEROS, default='M')
     edad = models.PositiveBigIntegerField()
     activo = models.BooleanField(default=True)
+
 
 # ------------------------------------------------------------------------------------------
 # ****************************************ATLETAS*******************************************
@@ -62,6 +69,7 @@ class Atleta(Persona):
     grupo_etario = models.ForeignKey(
         GrupoEtario, on_delete=models.SET_NULL, null=True)
 
+
 # ------------------------------------------------------------------------------------------
 # ****************************************ENTRENADORES**************************************
 # ------------------------------------------------------------------------------------------
@@ -71,12 +79,14 @@ class Entrenador(Persona):
     grupo_etario = models.ManyToManyField(
         GrupoEtario, through='RelacionEntrenadorGrupoEtario')
 
+
 # ------------------------------------------------------------------------------------------
 # ****************************************INSTRUCTORES**************************************
 # ------------------------------------------------------------------------------------------
 
 class Instructor(Persona):
     pass
+
 
 # ------------------------------------------------------------------------------------------
 # *****************************RELAciON ENTRENADOR-GRUPO ETARIO*****************************

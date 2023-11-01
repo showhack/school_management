@@ -5,6 +5,7 @@
 *.pyo
 *.pyd
 .DS_Store
+.vscode
 
 # Entornos virtuales (si utilizas virtualenv o venv)
 venv/

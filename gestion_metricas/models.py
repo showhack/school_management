@@ -1,5 +1,4 @@
 from django.db import models
-from apps.gestion_miembros.models import Entrenador
 
 
 # ----------------- DISTRIBUCION DE ACENTOS -----------------

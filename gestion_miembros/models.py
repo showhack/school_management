@@ -5,15 +5,13 @@ CHOICE_GENEROS = (
     ('F', 'FEMENINO')
 )
 
+
 # Modelo para Grupo Etario
-
-
 class GrupoEtario(models.Model):
     rango_edad = models.CharField(max_length=50, unique=True)
 
+
 # Modelos para Dirección
-
-
 class Pais(models.Model):
     nombre = models.CharField(max_length=100)
 
@@ -33,9 +31,8 @@ class Direccion(models.Model):
     numero = models.IntegerField()
     municipio = models.ForeignKey(Municipio, on_delete=models.RESTRICT)
 
+
 # Modelo para Persona
-
-
 class Persona(models.Model):
     ci = models.CharField(max_length=11, unique=True,
                           primary_key=True, blank=True)
@@ -44,14 +41,12 @@ class Persona(models.Model):
         max_length=10, choices=CHOICE_GENEROS, default='M')
     edad = models.PositiveBigIntegerField(null=True, blank=True)
     activo = models.BooleanField(default=True)
-    direccion = models.ForeignKey(Direccion, on_delete=models.RESTRICT)
 
     def __str__(self):
         return self.nombre
 
+
 # Modelo para Atleta
-
-
 class Atleta(models.Model):
     persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
     color_de_piel = models.CharField(max_length=30)
@@ -68,22 +63,18 @@ class Atleta(models.Model):
     grupo_etario = models.ForeignKey(
         GrupoEtario, on_delete=models.SET_NULL, null=True)
 
+
 # Modelo para Entrenador
-
-
 class Entrenador(models.Model):
     persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
     anno_exp = models.SmallIntegerField()
     grupo_etario = models.ManyToManyField(
         GrupoEtario, through='RelacionEntrenadorGrupoEtario')
 
+
 # Modelo para Instructor
-
-
 class Instructor(Persona):
-    persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
-
-# Modelo para la relación entre Entrenador y Grupo Etario
+    persona = models.OneToOneField(Persona, on_delete=models.CASCADE, related_name='instructor_persona', null=True)
 
 
 class RelacionEntrenadorGrupoEtario(models.Model):

@@ -9,15 +9,15 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import datetime
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from decouple import config
+from django.conf import settings
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-^#f3ws#88&+(uhv#h&+u2+i#9=s3#!^ot^271z*ocwxf*a3dg%'
@@ -29,7 +29,6 @@ ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,10 +36,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
+
+    # Third-party apps
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # Local apps
+    'api',
     'gestion_miembros',
     'gestion_metricas',
+    'users.apps.UsersAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,17 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#databases
-import os
-from decouple import config
-
-# Configuración de la base de datos
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -99,24 +95,26 @@ DATABASES = {
 # Otras configuraciones de Django
 SECRET_KEY = os.environ.get('SECRET_KEY', 'mysecretkey')
 
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
+AUTH_USER_MODEL = 'users.User'
+# https://docs.djangoproject.com/en/dev
+SESSION_COOKIE_AGE = 86400
+# PASSWORDS
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
+PASSWORD_HASHERS = [
+    # https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
+# https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
@@ -141,3 +139,33 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {'anon': '20/second', 'user': '20/second'},
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'core.api.pagination.StandardPageNumberPagination',
+    'PAGE_SIZE': 8,
+    'DEFAULT_FILTER_BACKENDS': (),
+    'EXCEPTION_HANDLER': 'core.api.exceptions.extra_exception_handler',
+    'COERCE_DECIMAL_TO_STRING': False,
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': settings.SECRET_KEY,
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+}
+

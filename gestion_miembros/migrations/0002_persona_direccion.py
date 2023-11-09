@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='persona',
             name='direccion',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.RESTRICT, to='gestion_miembros.direccion'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.RESTRICT, to='gestion_miembros.direccion'),
             preserve_default=False,
         ),
     ]

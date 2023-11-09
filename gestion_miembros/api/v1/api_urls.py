@@ -11,4 +11,5 @@ router.register(r'persona', PersonaResource)
 router.register(r'atleta', AtletaResource)
 router.register(r'entrenador', EntrenadorResource)
 router.register(r'instructor', InstructorResource)
-router.register(r'relacion_entrenador_grupo_etario', RelacionEntrenadorGrupoEtarioResource)
+router.register(r'relacion_entrenador_grupo_etario',
+                RelacionEntrenadorGrupoEtarioResource)

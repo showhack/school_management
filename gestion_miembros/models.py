@@ -81,7 +81,8 @@ class Entrenador(models.Model):
 
 
 class Instructor(Persona):
-    persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
+    pass
+    # persona = models.OneToOneField(Persona, on_delete=models.CASCADE)
 
 # Modelo para la relación entre Entrenador y Grupo Etario
 

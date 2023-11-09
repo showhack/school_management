@@ -1,0 +1,18 @@
+ini
+[MASTER]
+init-hook= 'import sys;
+sys.path.append("./school_management/")'
+
+
+[MESSAGES CONTROL]
+disable = CO114, CO115, CO116
+
+[REFACTORING]
+max-locals = 10
+max-args = 5
+max-returns = 5
+max-branch = 12
+max-statements = 50
+maxparents = 7
+max-atributes = 7
+min-public-methods = 2

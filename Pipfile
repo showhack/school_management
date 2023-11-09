@@ -6,12 +6,16 @@ name = "pypi"
 [packages]
 asgiref = "==3.7.2"
 django = "*"
+Django = {extras = ["argon2"], version = "*"}
 sqlparse = "==0.4.4"
 typing-extensions = "==4.8.0"
 environ = "*"
 djangorestframework = "*"
 psycopg2-binary = "*"
 python-decouple = "*"
+django-allauth = "*"
+djangorestframework-simplejwt = "*"
+djangorestframework-jwt = "*"
 
 [dev-packages]
 

@@ -17,14 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from gestion_miembros.api.v1.api_urls import router
+from gestion_miembros.api.v1.api_urls import router as gestion_miembros_routes
 from gestion_cualidades.api.v1.api_urls import router
-# from rest_framework_swagger.views import get_swagger_view
 
-# schema_view = get_swagger_view(title='School Management API')
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 
 urlpatterns = [
-    path('api/v1/', include(router.urls)),
+    path('api/v1/', include(gestion_miembros_routes.urls)),
     path('admin/', admin.site.urls),
-    # path(r'^$', schema_view),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

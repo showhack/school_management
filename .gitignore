@@ -6,7 +6,7 @@
 *.pyd
 .DS_Store
 .vscode
-
+.pylintrc
 # Entornos virtuales (si utilizas virtualenv o venv)
 venv/
 env/

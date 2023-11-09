@@ -59,3 +59,12 @@ down:
 
 clear-volumes:
 	docker-compose -f docker-compose.local.yml down -v
+
+startapp:
+	docker-compose -f docker-compose.local.yml run --rm web python manage.py startapp $(ARGS)
+
+release-port-postgres:
+	sudo lsof -i :5432
+
+kill-process:
+	sudo kill -9 $(ARGS)

@@ -1,9 +1,9 @@
 from django.db import models
+
 from gestion_miembros.models import (GrupoEtario, Instructor, Entrenador)
 
+
 # Create your models here.
-
-
 class Cualidades(models.Model):
     nombre = models.CharField(max_length=255)
     entrenador = models.ManyToManyField(

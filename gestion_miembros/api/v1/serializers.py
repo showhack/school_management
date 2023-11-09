@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from gestion_miembros.models import GrupoEtario, Pais, Provincia, Municipio, Direccion, Persona, Atleta, Entrenador, Instructor, RelacionEntrenadorGrupoEtario
+
+from gestion_miembros.models import GrupoEtario, Pais, Provincia, Municipio, Direccion, Persona, Atleta, Entrenador, \
+    Instructor, RelacionEntrenadorGrupoEtario
+
 
 class GrupoEtarioSerializer(serializers.ModelSerializer):
     class Meta:

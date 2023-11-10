@@ -16,6 +16,8 @@ python-decouple = "*"
 django-allauth = "*"
 djangorestframework-simplejwt = "*"
 djangorestframework-jwt = "*"
+drf-yasg = "*"
+coreapi = "*"
 
 [dev-packages]
 

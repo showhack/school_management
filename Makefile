@@ -9,7 +9,7 @@ setup:
 
 # Build de la aplicación
 build:
-	docker-compose -f docker-compose.local.yml build
+	docker-compose -f docker-compose.local.yml build --progress=plain
 
 # Ejecuta las migraciones
 migrate:

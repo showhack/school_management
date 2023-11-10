@@ -15,16 +15,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import include
-from gestion_cualidades.api.v1.api_urls import router as gestion_cualidades_routes
-from gestion_miembros.api.v1.api_urls import router as gestion_miembros_routes
-
+from django.urls import path, include, re_path
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
 
+from gestion_cualidades.api.v1.api_urls import router as gestion_cualidades_routes
+from gestion_miembros.api.v1.api_urls import router as gestion_miembros_routes
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="School Management API",
+        default_version='v1',
+        description="API para la escuela deportiva Manuel Fajardo",
+        contact=openapi.Contact(email="luiso96ballagas@gmail.com"),
+        license=openapi.License(name="MIT"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('api/v1/gestion_miembros', include(gestion_miembros_routes.urls)),
@@ -32,4 +45,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

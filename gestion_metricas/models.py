@@ -5,6 +5,7 @@ from django.db import models
 
 # Modelo para Categorías de Distribución de Acentos.--------------------------------------
 
+
 class DistribucionAcentosCategoria(models.Model):
     nombre = models.CharField(max_length=100)
 
@@ -17,10 +18,9 @@ class DistribucionAcentosSubCategoria(models.Model):
     categoria = models.ForeignKey(
         DistribucionAcentosCategoria, on_delete=models.CASCADE)
 
-    # Relaciones con modelos que aun no existen
-    # grupo_etario = models.ManyToManyField('gestion_personas.GrupoEtario')
-    # profesor = models.ManyToManyField()
-    # instructor = models.ManyToManyField('gestion_personas.Instructor')
+    grupo_etario = models.ManyToManyField('gestion_miembros.GrupoEtario')
+    entrenador = models.ManyToManyField('gestion_miembros.Entrenador')
+    instructor = models.ManyToManyField('gestion_miembros.Instructor')
 
 
 class DistribucionAcentosPrioridades(models.Model):
@@ -50,10 +50,9 @@ class DistribucionVolSemNXContenidoCualidad(models.Model):
     """
     nombre = models.CharField(max_length=100)
 
-    # Relaciones con modelos que aun no existen
-    # grupo_etario = models.ManyToManyField('gestion_personas.GrupoEtario')
-    # profesor = models.ManyToManyField('gestion_personas.Profesor')
-    # instructor = models.ManyToManyField('gestion_personas.Instructor')
+    grupo_etario = models.ManyToManyField('gestion_miembros.GrupoEtario')
+    entrenador = models.ManyToManyField('gestion_miembros.Entrenador')
+    instructor = models.ManyToManyField('gestion_miembros.Instructor')
 
 
 class DistribucionVolSemNXContenidoDistribucion(models.Model):

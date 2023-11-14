@@ -1,6 +1,6 @@
 from django.db import models
 
-from gestion_miembros.models import (GrupoEtario, Instructor, Entrenador)
+from gestion_miembros.models import (GrupoEtario, Entrenador)
 
 
 # Create your models here.

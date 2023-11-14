@@ -39,7 +39,7 @@ class Persona(models.Model):
     nombre = models.CharField(max_length=100, null=True)
     genero = models.CharField(
         max_length=10, choices=CHOICE_GENEROS, default='M')
-    edad = models.PositiveBigIntegerField(null=True, blank=True)
+    edad = models.PositiveBigIntegerField(null=True)
     activo = models.BooleanField(default=True)
 
     def __str__(self):
@@ -70,11 +70,6 @@ class Entrenador(models.Model):
     anno_exp = models.SmallIntegerField()
     grupo_etario = models.ManyToManyField(
         GrupoEtario, through='RelacionEntrenadorGrupoEtario')
-
-
-# Modelo para Instructor
-class Instructor(Persona):
-    persona = models.OneToOneField(Persona, on_delete=models.CASCADE, related_name='instructor_persona', null=True)
 
 
 class RelacionEntrenadorGrupoEtario(models.Model):

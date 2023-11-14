@@ -20,7 +20,6 @@ class DistribucionAcentosSubCategoria(models.Model):
 
     grupo_etario = models.ManyToManyField('gestion_miembros.GrupoEtario')
     entrenador = models.ManyToManyField('gestion_miembros.Entrenador')
-    instructor = models.ManyToManyField('gestion_miembros.Instructor')
 
 
 class DistribucionAcentosPrioridades(models.Model):
@@ -52,7 +51,6 @@ class DistribucionVolSemNXContenidoCualidad(models.Model):
 
     grupo_etario = models.ManyToManyField('gestion_miembros.GrupoEtario')
     entrenador = models.ManyToManyField('gestion_miembros.Entrenador')
-    instructor = models.ManyToManyField('gestion_miembros.Instructor')
 
 
 class DistribucionVolSemNXContenidoDistribucion(models.Model):

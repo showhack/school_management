@@ -3,9 +3,9 @@ from rest_framework import viewsets
 
 from core.api.permissions import IsAuthenticatedOnRetrieve, NoDeletes
 from gestion_miembros.models import GrupoEtario, Pais, Provincia, Municipio, Direccion, Persona, Atleta, Entrenador, \
-    Instructor, RelacionEntrenadorGrupoEtario
+    RelacionEntrenadorGrupoEtario
 from .serializers import GrupoEtarioSerializer, PaisSerializer, ProvinciaSerializer, MunicipioSerializer, \
-    DireccionSerializer, PersonaSerializer, AtletaSerializer, EntrenadorSerializer, InstructorSerializer, \
+    DireccionSerializer, PersonaSerializer, AtletaSerializer, EntrenadorSerializer, \
     RelacionEntrenadorGrupoEtarioSerializer
 
 
@@ -54,12 +54,6 @@ class AtletaResource(viewsets.ModelViewSet):
 class EntrenadorResource(viewsets.ModelViewSet):
     queryset = Entrenador.objects.all()
     serializer_class = EntrenadorSerializer
-    # permission_classes = [IsAuthenticatedOnRetrieve, NoDeletes]
-
-
-class InstructorResource(viewsets.ModelViewSet):
-    queryset = Instructor.objects.all()
-    serializer_class = InstructorSerializer
     # permission_classes = [IsAuthenticatedOnRetrieve, NoDeletes]
 
 
